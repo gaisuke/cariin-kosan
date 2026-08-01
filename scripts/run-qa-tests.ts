@@ -1,4 +1,5 @@
 import { KOS_LISTINGS } from '../src/data/kosListings';
+import { extractMaxPrice, parseNaturalLanguageQuery } from '../src/lib/gemmaEngine';
 
 interface TestResult {
   name: string;
@@ -54,9 +55,28 @@ async function main() {
     })
   );
 
-  // TEST CASE 2: Live Kos Search API (/api/kos/search)
+  // TEST CASE 2: Full Number Price Parsing (e.g. "under 1800000", "under 1.800.000")
   results.push(
-    await runTestCase('Test Case 2: Live Kos Search API (/api/kos/search)', async () => {
+    await runTestCase('Test Case 2: Price Parser for Full Numbers ("under 1800000")', async () => {
+      const p1 = extractMaxPrice('under 1800000');
+      if (p1 !== 1800000) throw new Error(`Expected 1800000 for "under 1800000", got ${p1}`);
+
+      const p2 = extractMaxPrice('under 1.800.000');
+      if (p2 !== 1800000) throw new Error(`Expected 1800000 for "under 1.800.000", got ${p2}`);
+
+      const parsed = parseNaturalLanguageQuery('under 1800000');
+      if (parsed.maxPrice !== 1800000) throw new Error(`Expected maxPrice 1800000, got ${parsed.maxPrice}`);
+
+      const invalidOverBudget = parsed.filteredListings.some((k) => k.price > 1800000);
+      if (invalidOverBudget) {
+        throw new Error('Filtered listings contained kos priced above 1,800,000!');
+      }
+    })
+  );
+
+  // TEST CASE 3: Live Kos Search API (/api/kos/search)
+  results.push(
+    await runTestCase('Test Case 3: Live Kos Search API (/api/kos/search)', async () => {
       const res = await fetch(`${BASE_URL}/api/kos/search?q=Setiabudi&city=Jakarta%20South`);
       if (!res.ok) throw new Error(`HTTP status ${res.status}`);
       const json = await res.json();
@@ -66,9 +86,9 @@ async function main() {
     })
   );
 
-  // TEST CASE 3: Gemma 4 MaaS AI Search Query Parser (/api/ai/analyze)
+  // TEST CASE 4: Gemma 4 MaaS AI Search Query Parser (/api/ai/analyze)
   results.push(
-    await runTestCase('Test Case 3: Gemma 4 MaaS AI Search Analysis (/api/ai/analyze)', async () => {
+    await runTestCase('Test Case 4: Gemma 4 MaaS AI Search Analysis (/api/ai/analyze)', async () => {
       const res = await fetch(`${BASE_URL}/api/ai/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -83,9 +103,9 @@ async function main() {
     })
   );
 
-  // TEST CASE 4: Bobi AI Concierge Chat (/api/ai/chat)
+  // TEST CASE 5: Bobi AI Concierge Chat (/api/ai/chat)
   results.push(
-    await runTestCase('Test Case 4: Bobi AI Concierge Chat (/api/ai/chat)', async () => {
+    await runTestCase('Test Case 5: Bobi AI Concierge Chat (/api/ai/chat)', async () => {
       const testListing = KOS_LISTINGS[0];
       const res = await fetch(`${BASE_URL}/api/ai/chat`, {
         method: 'POST',
@@ -103,9 +123,9 @@ async function main() {
     })
   );
 
-  // TEST CASE 5: Standalone Kos Detail Page Route (/kos/[id])
+  // TEST CASE 6: Standalone Kos Detail Page Route (/kos/[id])
   results.push(
-    await runTestCase('Test Case 5: Standalone Detail Route (/kos/cove-nine-setiabudi)', async () => {
+    await runTestCase('Test Case 6: Standalone Detail Route (/kos/cove-nine-setiabudi)', async () => {
       const res = await fetch(`${BASE_URL}/kos/cove-nine-setiabudi`);
       if (!res.ok) throw new Error(`HTTP status ${res.status}`);
       const html = await res.text();
@@ -115,9 +135,9 @@ async function main() {
     })
   );
 
-  // TEST CASE 6: Live Production Deployment Health Check
+  // TEST CASE 7: Live Production Deployment Health Check
   results.push(
-    await runTestCase('Test Case 6: Live Production Deployment Health Check', async () => {
+    await runTestCase('Test Case 7: Live Production Deployment Health Check', async () => {
       const res = await fetch(CLOUD_RUN_URL, { method: 'HEAD' });
       if (!res.ok) throw new Error(`Cloud Run returned HTTP status ${res.status}`);
     })

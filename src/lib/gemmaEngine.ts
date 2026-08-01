@@ -15,6 +15,43 @@ export interface ParseQueryResult {
   genderType: string | null;
 }
 
+export function extractMaxPrice(query: string): number | null {
+  const q = query.toLowerCase().trim();
+  if (!q) return null;
+
+  // 1. Full number match: e.g. "1800000", "1.800.000", "1,800,000", "rp 2.000.000", "under 1800000", "< 1500000"
+  const fullNumMatch = q.match(/(?:under|<|dibawah|max|maksimal|kurang dari|rp\.?\s*|\b)\s*(?:rp\.?\s*)?(\d{1,3}(?:[.,]\d{3})+|\d{6,8})\b/i);
+  if (fullNumMatch) {
+    const numStr = fullNumMatch[1].replace(/[.,]/g, '');
+    const val = parseInt(numStr, 10);
+    if (!isNaN(val) && val >= 500000 && val <= 50000000) {
+      return val;
+    }
+  }
+
+  // 2. Million match with "jt" or "juta": e.g. "1.8jt", "2.5 juta", "2jt", "under 1.8 million"
+  const millionMatch = q.match(/(?:under|<|dibawah|max|maksimal|kurang dari|\b)\s*(?:rp\.?\s*)?(\d+(?:[.,]\d+)?)\s*(?:jt|juta|million)\b/i);
+  if (millionMatch) {
+    const priceVal = parseFloat(millionMatch[1].replace(',', '.'));
+    if (!isNaN(priceVal)) {
+      return Math.round(priceVal * 1000000);
+    }
+  }
+
+  // 3. Keyword + decimal match: e.g. "under 1.8", "max 2.5", "harga 2"
+  const keywordDecimalMatch = q.match(/(?:harga|budget|biaya|under|<|dibawah|max|maksimal)\s*(?:rp\.?\s*)?(\d+(?:[.,]\d+)?)\b/i);
+  if (keywordDecimalMatch) {
+    const valStr = keywordDecimalMatch[1].replace(',', '.');
+    const val = parseFloat(valStr);
+    if (!isNaN(val)) {
+      if (val >= 500000) return Math.round(val);
+      if (val <= 50) return Math.round(val * 1000000);
+    }
+  }
+
+  return null;
+}
+
 export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
   const q = query.toLowerCase().trim();
 
@@ -22,7 +59,7 @@ export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
     return {
       filteredListings: KOS_LISTINGS,
       extractedBadges: [],
-      summaryText: 'Showing all 6 verified boarding houses across Indonesia.',
+      summaryText: 'Showing all verified boarding houses across Indonesia.',
       maxPrice: null,
       selectedCityOrArea: null,
       genderType: null,
@@ -30,23 +67,22 @@ export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
   }
 
   const badges: ExtractedFilterBadge[] = [];
-  let maxPrice: number | null = null;
   let selectedCityOrArea: string | null = null;
   let genderType: string | null = null;
 
   // 1. Detect Price Filter
-  // Matches "under 2.5jt", "< 2.5jt", "dibawah 2.5 juta", "max 2jt", "under 2jt", "1.5jt", etc.
-  const millionMatch = q.match(/(?:under|<|dibawah|max|maksimal|kurang dari|\b)\s*(\d+(?:[.,]\d+)?)\s*(?:jt|juta|million)/i);
-  if (millionMatch) {
-    const priceVal = parseFloat(millionMatch[1].replace(',', '.'));
-    if (!isNaN(priceVal)) {
-      maxPrice = priceVal * 1000000;
-      badges.push({
-        id: 'price-filter',
-        label: `< Rp ${priceVal} Juta / bln`,
-        category: 'price',
-      });
-    }
+  const maxPrice = extractMaxPrice(q);
+  if (maxPrice !== null) {
+    const millionVal = maxPrice / 1000000;
+    const labelText = maxPrice >= 1000000
+      ? `< Rp ${millionVal % 1 === 0 ? millionVal : millionVal.toFixed(1)} Juta / bln`
+      : `< Rp ${maxPrice.toLocaleString('id-ID')} / bln`;
+
+    badges.push({
+      id: 'price-filter',
+      label: labelText,
+      category: 'price',
+    });
   }
 
   // 2. Detect Locations
@@ -57,6 +93,21 @@ export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
     tembalang: 'Tembalang',
     cisitu: 'Cisitu',
     margonda: 'Margonda',
+    menteng: 'Menteng',
+    tanahabang: 'Tanah Abang',
+    kebonkacang: 'Tanah Abang',
+    tanjungduren: 'Grogol',
+    grogol: 'Grogol',
+    kelapagading: 'Kelapa Gading',
+    rawamangun: 'Rawamangun',
+    kemang: 'Kemang',
+    senopati: 'Senopati',
+    cilandak: 'Cilandak',
+    tebet: 'Tebet',
+    blokm: 'Blok M',
+    kuningan: 'Kuningan',
+    radiodalam: 'Pondok Indah',
+    pancoran: 'Pancoran',
     jakarta: 'Jakarta',
     bogor: 'Bogor',
     semarang: 'Semarang',
@@ -105,7 +156,7 @@ export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
   if (q.includes('wifi') || q.includes('internet')) {
     badges.push({ id: 'fac-wifi', label: 'Free WiFi', category: 'facility' });
   }
-  if (q.includes('ac')) {
+  if (q.includes('ac') && !q.includes('access')) {
     badges.push({ id: 'fac-ac', label: 'Ber-AC', category: 'facility' });
   }
   if (q.includes('wfh') || q.includes('desk') || q.includes('meja')) {
@@ -138,15 +189,25 @@ export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
 
     // Facility checks
     if (q.includes('mandi dalam') || q.includes('km dalam') || q.includes('private bathroom')) {
-      if (!item.facilities.some((f) => f.toLowerCase().includes('private bathroom'))) {
+      if (!item.facilities.some((f) => f.toLowerCase().includes('private bathroom') || f.toLowerCase().includes('mandi dalam'))) {
         return false;
       }
     }
-    if (q.includes('ac') && !item.facilities.some((f) => f.toLowerCase().includes('ac'))) {
-      return false;
+    if (q.includes('ac') && !q.includes('access')) {
+      if (!item.facilities.some((f) => f.toLowerCase().includes('ac'))) {
+        return false;
+      }
     }
     if (q.includes('mrt') || q.includes('krl')) {
-      if (!item.nearbyPOIs.some((p) => p.type === 'transit')) {
+      const hasTransitPOI = item.nearbyPOIs.some(
+        (p) =>
+          p.type === 'transit' ||
+          p.name.toLowerCase().includes('mrt') ||
+          p.name.toLowerCase().includes('krl') ||
+          p.name.toLowerCase().includes('stasiun') ||
+          p.name.toLowerCase().includes('halte')
+      );
+      if (!hasTransitPOI) {
         return false;
       }
     }
@@ -169,43 +230,24 @@ export function parseNaturalLanguageQuery(query: string): ParseQueryResult {
 }
 
 export function generateBobiResponse(listing: KosListing, userQuestion: string): string {
-  const q = userQuestion.toLowerCase();
+  const q = userQuestion.toLowerCase().trim();
 
-  // Question: Late night entry / Curfew / 24h
-  if (q.includes('late night') || q.includes('curfew') || q.includes('jam malam') || q.includes('24h') || q.includes('24 jam') || q.includes('pulang malam')) {
-    const has24h = listing.facilities.some((f) => f.toLowerCase().includes('24h') || f.toLowerCase().includes('24 jam'));
-    if (has24h) {
-      return `Yes! ${listing.name} offers 24/7 access. Occupants receive a personal electronic keycard/fob to enter at any hour safely.`;
-    } else {
-      const curfewRule = listing.rules.find((r) => r.toLowerCase().includes('curfew') || r.toLowerCase().includes('hours'));
-      return `Notice regarding entry: ${curfewRule || 'There is a curfew around 10 PM / 11 PM.'} Please check with ${listing.landlord.name} if you require special late-night permissions.`;
-    }
+  if (q.includes('price') || q.includes('harga') || q.includes('biaya') || q.includes('sewa')) {
+    return `The rental rate for ${listing.name} is Rp ${listing.price.toLocaleString('id-ID')} / month with a security deposit of Rp ${listing.deposit.toLocaleString('id-ID')}.`;
   }
 
-  // Question: Internet / WiFi speed
-  if (q.includes('internet') || q.includes('wifi') || q.includes('speed') || q.includes('koneksi')) {
-    const wifiFac = listing.facilities.find((f) => f.toLowerCase().includes('wifi'));
-    return `WiFi Specs: ${listing.name} is equipped with high-speed fiber internet (${wifiFac || '100Mbps High Speed'}). Verified by Gemma AI to be ideal for video calls, streaming, and student assignments.`;
+  if (q.includes('rule') || q.includes('peraturan') || q.includes('syarat') || q.includes('tamu')) {
+    return `House rules at ${listing.name}: ${listing.rules.join('. ')}.`;
   }
 
-  // Question: Total cost including deposit
-  if (q.includes('cost') || q.includes('total') || q.includes('deposit') || q.includes('bayar') || q.includes('biaya')) {
-    const total = listing.price + listing.deposit;
-    const formatPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
-    return `Cost Breakdown for ${listing.name}:\n• Monthly Rent: ${formatPrice.format(listing.price)}\n• Refundable Security Deposit: ${formatPrice.format(listing.deposit)}\n👉 First Month Move-in Total: ${formatPrice.format(total)} (Deposit is fully refunded upon checkout according to terms).`;
+  if (q.includes('location') || q.includes('lokasi') || q.includes('alamat') || q.includes('dekat')) {
+    const poiSummary = listing.nearbyPOIs.map((p) => `${p.name} (${p.distance})`).join(', ');
+    return `${listing.name} is located at ${listing.address}. Nearby transit & hubs: ${poiSummary}.`;
   }
 
-  // Question: Guest visits / Rules
-  if (q.includes('guest') || q.includes('tamu') || q.includes('teman') || q.includes('visit') || q.includes('rule') || q.includes('peraturan')) {
-    return `Rules for ${listing.name}:\n${listing.rules.map((r, i) => `${i + 1}. ${r}`).join('\n')}`;
+  if (q.includes('facility') || q.includes('fasilitas') || q.includes('wifi') || q.includes('ac')) {
+    return `${listing.name} includes: ${listing.facilities.join(', ')}.`;
   }
 
-  // Question: Parking
-  if (q.includes('parkir') || q.includes('parking') || q.includes('motor') || q.includes('mobil') || q.includes('car')) {
-    const parkingFac = listing.facilities.filter((f) => f.toLowerCase().includes('park') || f.toLowerCase().includes('garage') || f.toLowerCase().includes('motorbike'));
-    return `Parking Facilities: ${parkingFac.length > 0 ? parkingFac.join(', ') : 'Motorbike parking available on site.'}`;
-  }
-
-  // Default Gemma response
-  return `Hi! I'm Bobi, your Gemma AI concierge for ${listing.name}. Located in ${listing.area}, ${listing.city} at ${listing.price.toLocaleString('id-ID')} IDR/mo. Features ${listing.facilities.slice(0, 4).join(', ')}. How else can I assist you with your booking inquiry?`;
+  return `Halo! I am Bobi AI concierge for ${listing.name}. Feel free to ask about room rates, rules, or nearby transport!`;
 }
