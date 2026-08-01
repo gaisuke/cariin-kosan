@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { KOS_LISTINGS, KosListing } from '@/data/kosListings';
+import { parseNaturalLanguageQuery } from '@/lib/gemmaEngine';
 
 export async function GET(req: NextRequest) {
   try {
@@ -93,20 +94,15 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    // Fallback: Filter local verified dataset with dynamic search term matching
+    // Local verified dataset with natural language filter
     let results = KOS_LISTINGS;
-    if (searchTerm && searchTerm !== 'kos Indonesia') {
-      const qLower = searchTerm.toLowerCase();
-      results = KOS_LISTINGS.filter(
-        (item) =>
-          item.name.toLowerCase().includes(qLower) ||
-          item.address.toLowerCase().includes(qLower) ||
-          item.area.toLowerCase().includes(qLower) ||
-          item.city.toLowerCase().includes(qLower)
-      );
-      if (results.length === 0) {
-        results = KOS_LISTINGS;
-      }
+    if (query.trim()) {
+      const parsed = parseNaturalLanguageQuery(query);
+      results = parsed.filteredListings;
+    }
+
+    if (city && city !== 'All') {
+      results = results.filter((item) => item.city === city || item.area.toLowerCase().includes(city.toLowerCase()));
     }
 
     return NextResponse.json({
