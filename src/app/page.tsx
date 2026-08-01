@@ -110,70 +110,13 @@ export default function HomePage() {
 
     // Apply natural language AI query filter if present
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase().trim();
       const parsed = parseNaturalLanguageQuery(searchQuery);
+      const matchingIds = new Set(parsed.filteredListings.map((x) => x.id));
 
       result = result.filter((item) => {
-        // Price limit
-        if (parsed.maxPrice !== null && item.price > parsed.maxPrice) {
-          return false;
-        }
-
-        // Location / area filter from query
-        if (parsed.selectedCityOrArea) {
-          const locLower = parsed.selectedCityOrArea.toLowerCase();
-          const matchCity = item.city.toLowerCase().includes(locLower);
-          const matchArea = item.area.toLowerCase().includes(locLower);
-          const matchAddress = item.address.toLowerCase().includes(locLower);
-          const matchName = item.name.toLowerCase().includes(locLower);
-          if (!matchCity && !matchArea && !matchAddress && !matchName) {
-            return false;
-          }
-        }
-
-        // Gender filter
-        if (parsed.genderType && item.type !== parsed.genderType && item.type !== 'Campur') {
-          return false;
-        }
-
-        // Transit / MRT / KRL filter
-        if (q.includes('mrt') || q.includes('krl') || q.includes('stasiun') || q.includes('transit')) {
-          const hasTransitPOI = item.nearbyPOIs.some(
-            (p) =>
-              p.type === 'transit' ||
-              p.name.toLowerCase().includes('mrt') ||
-              p.name.toLowerCase().includes('krl') ||
-              p.name.toLowerCase().includes('stasiun') ||
-              p.name.toLowerCase().includes('halte')
-          );
-          const hasTransitFacility = item.facilities.some((f) => f.toLowerCase().includes('mrt') || f.toLowerCase().includes('krl'));
-          if (!hasTransitPOI && !hasTransitFacility) {
-            return false;
-          }
-        }
-
-        // Facility check (AC)
-        if (q.includes('ac') && !q.includes('access')) {
-          if (!item.facilities.some((f) => f.toLowerCase().includes('ac'))) {
-            return false;
-          }
-        }
-
-        // Facility check (WiFi)
-        if (q.includes('wifi') || q.includes('internet')) {
-          if (!item.facilities.some((f) => f.toLowerCase().includes('wifi') || f.toLowerCase().includes('internet'))) {
-            return false;
-          }
-        }
-
-        // Facility check (Private Bathroom / Mandi Dalam)
-        if (q.includes('mandi dalam') || q.includes('km dalam') || q.includes('private bathroom')) {
-          if (!item.facilities.some((f) => f.toLowerCase().includes('private bathroom') || f.toLowerCase().includes('mandi dalam'))) {
-            return false;
-          }
-        }
-
-        return true;
+        // Always include live Google Maps API results, otherwise match local IDs
+        if (item.id.startsWith('live-gmaps-')) return true;
+        return matchingIds.has(item.id);
       });
     }
 
