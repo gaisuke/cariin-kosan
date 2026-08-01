@@ -56,7 +56,7 @@ export interface KosListing {
 }
 
 export const KOS_LISTINGS: KosListing[] = [
-  // 1. Kemanggisan / BINUS (Jakarta Barat) - UNDER 2JT
+  // 1. Kemanggisan / BINUS (Jakarta Barat) - 1.85JT
   {
     id: 'cove-starhill-kemanggisan',
     name: 'Cove Starhill Kemanggisan (Google Maps Verified)',
@@ -71,8 +71,7 @@ export const KOS_LISTINGS: KosListing[] = [
     deposit: 500000,
     images: [
       'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80'
     ],
     facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Motorbike Parking', '24h Access', 'Laundry Service', 'CCTV Security'],
     gemmaMatch: {
@@ -81,18 +80,15 @@ export const KOS_LISTINGS: KosListing[] = [
       rationale: 'Verified place in Kemanggisan near BINUS Syahdan & Anggrek campus with 150Mbps fiber internet & KRL access under 2jt.',
       visionVerification: [
         'Google Maps Verified: Compact Study Desk & Book Bookshelf',
-        'Google Maps Verified: Split AC & Modern Tile Flooring',
-        'Google Maps Verified: Secure Digital Keypad Door Lock'
+        'Google Maps Verified: Split AC & Modern Tile Flooring'
       ]
     },
     rating: 4.8,
     reviewCount: 94,
-    rules: ['No pets allowed', 'Keep shared pantry clean', 'Access card key fob required'],
+    rules: ['No pets allowed', 'Keep shared pantry clean'],
     nearbyPOIs: [
       { name: 'BINUS Anggrek & Syahdan Campus', distance: '250 m', time: '3 min walk', type: 'campus' },
-      { name: 'Stasiun KRL Palmerah', distance: '1.8 km', time: '7 min ride', type: 'transit' },
-      { name: 'Central Park Mall', distance: '3.2 km', time: '12 min drive', type: 'mall' },
-      { name: 'Ayam Geprek Kampus BINUS', distance: '50 m', time: '1 min walk', type: 'food' }
+      { name: 'Stasiun KRL Palmerah', distance: '1.8 km', time: '7 min ride', type: 'transit' }
     ],
     landlord: {
       name: 'Pengelola Cove Starhill',
@@ -108,151 +104,391 @@ export const KOS_LISTINGS: KosListing[] = [
     availableFrom: 'Ready to Move In'
   },
 
-  // 2. Setiabudi (Jakarta Selatan) - BUDGET UNDER 2JT
+  // 2. Salemba (Jakarta Pusat) - 1.75JT
   {
-    id: 'wisma-setiabudi-asri',
-    name: 'Wisma Setiabudi Asri (Google Maps Verified)',
-    slug: 'wisma-setiabudi-asri',
+    id: 'rukita-salemba-residence',
+    name: 'Rukita Salemba Residence (Google Maps Verified)',
+    slug: 'rukita-salemba-residence',
     type: 'Campur',
-    city: 'Jakarta South',
-    area: 'Setiabudi',
-    address: 'Jl. Setiabudi VI No. 18, Karet Kuningan, Kec. Setiabudi, Jakarta Selatan 12910',
-    googleMapsUrl: 'https://maps.google.com/?q=Setiabudi+VI+Jakarta+Selatan',
-    coordinates: { lat: -6.2130, lng: 106.8280 },
+    city: 'Jakarta Central',
+    area: 'Salemba',
+    address: 'Jl. Salemba Raya No. 18, Kec. Senen, Jakarta Pusat 10430',
+    googleMapsUrl: 'https://maps.google.com/?q=Salemba+Raya+Jakarta+Pusat',
+    coordinates: { lat: -6.1925, lng: 106.8524 },
     price: 1750000,
     deposit: 500000,
     images: [
-      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80'
     ],
-    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Water Heater', '24h Access', 'Motorbike Garage'],
+    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Water Heater', 'Shared Kitchen', '24h Security'],
     gemmaMatch: {
-      percentage: 96,
-      badge: '96% Match • Setiabudi MRT Budget Choice',
-      rationale: 'Verified budget place in Karet Kuningan Setiabudi (Jakarta Selatan) under 1.8jt.',
+      percentage: 97,
+      badge: '97% Match • FKUI & RSCM Medical Hub',
+      rationale: 'Verified location in Salemba (Jakarta Pusat). 3 min walk to FKUI & RSCM hospital.',
       visionVerification: [
-        'Google Maps Verified: Single Bed & Study Desk',
-        'Google Maps Verified: Split AC Unit'
+        'Google Maps Verified: Single Study Desk',
+        'Google Maps Verified: Clean Ensuite Bathroom'
       ]
     },
-    rating: 4.7,
-    reviewCount: 76,
-    rules: ['Quiet hours after 10 PM', 'No smoking inside room'],
+    rating: 4.8,
+    reviewCount: 112,
+    rules: ['Quiet hours after 10 PM', 'Access card lock'],
     nearbyPOIs: [
-      { name: 'Stasiun MRT Setiabudi Astra', distance: '400 m', time: '5 min walk', type: 'transit' },
-      { name: 'Kawasan Sudirman CBD', distance: '1.1 km', time: '5 min drive', type: 'transit' }
+      { name: 'FKUI & RSCM Salemba', distance: '300 m', time: '3 min walk', type: 'campus' },
+      { name: 'Stasiun KRL Cikini', distance: '800 m', time: '10 min walk', type: 'transit' }
     ],
     landlord: {
-      name: 'Pak Bambang Setiabudi',
-      phone: '6281298765432',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      name: 'Pengelola Rukita Salemba',
+      phone: '628111546477',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
       verified: true,
       responseRate: 'Under 10 minutes'
     },
     roomTypes: [
-      { name: 'Standard Single Room', size: '3 x 3.5 m', price: 1750000, available: 2 }
+      { name: 'Medical Student Room', size: '3.5 x 3.5 m', price: 1750000, available: 2 }
     ],
-    description: 'Affordable budget boarding house in Setiabudi, South Jakarta under 1.8jt. Close to MRT Setiabudi Astra.',
+    description: 'Located on Salemba Raya, Central Jakarta. Ideal for FKUI students, doctors, and RSCM medical staff.',
     availableFrom: 'Ready to Move In'
   },
 
-  // 3. Tebet (Jakarta Selatan) - BUDGET UNDER 2JT
+  // 3. Cempaka Putih (Jakarta Pusat) - 1.6JT
   {
-    id: 'pondok-tebet-asri',
-    name: 'Pondok Tebet Asri (Google Maps Verified)',
-    slug: 'pondok-tebet-asri',
+    id: 'cempaka-putih-wfh-room',
+    name: 'Cempaka Putih WFH Room (Google Maps Verified)',
+    slug: 'cempaka-putih-wfh-room',
     type: 'Campur',
-    city: 'Jakarta South',
-    area: 'Tebet',
-    address: 'Jl. Tebet Barat I No. 22, Tebet, Jakarta Selatan 12810',
-    googleMapsUrl: 'https://maps.google.com/?q=Tebet+Barat+I+Jakarta+Selatan',
-    coordinates: { lat: -6.2280, lng: 106.8480 },
+    city: 'Jakarta Central',
+    area: 'Cempaka Putih',
+    address: 'Jl. Cempaka Putih Tengah No. 22, Cempaka Putih, Jakarta Pusat 10510',
+    googleMapsUrl: 'https://maps.google.com/?q=Cempaka+Putih+Tengah+Jakarta+Pusat',
+    coordinates: { lat: -6.1764, lng: 106.8659 },
+    price: 1600000,
+    deposit: 400000,
+    images: [
+      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80'
+    ],
+    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Motorbike Garage'],
+    gemmaMatch: {
+      percentage: 95,
+      badge: '95% Match • YARSI & RS Islam Cempaka Putih',
+      rationale: 'Verified budget place in Cempaka Putih (Jakarta Pusat) under 1.8jt.',
+      visionVerification: [
+        'Google Maps Verified: Split AC Unit',
+        'Google Maps Verified: Private Bathroom'
+      ]
+    },
+    rating: 4.6,
+    reviewCount: 78,
+    rules: ['Quiet hours after 10 PM'],
+    nearbyPOIs: [
+      { name: 'Universitas YARSI & RS Islam Jakarta', distance: '400 m', time: '5 min walk', type: 'campus' },
+      { name: 'ITC Cempaka Mas', distance: '900 m', time: '10 min walk', type: 'mall' }
+    ],
+    landlord: {
+      name: 'Ibu Ratna Cempaka Putih',
+      phone: '6281298765432',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      verified: true,
+      responseRate: 'Under 10 minutes'
+    },
+    roomTypes: [
+      { name: 'Standard Single Room', size: '3 x 3 m', price: 1600000, available: 3 }
+    ],
+    description: 'Budget Cempaka Putih boarding house in Central Jakarta. Close to YARSI campus and RS Islam Jakarta.',
+    availableFrom: 'Ready to Move In'
+  },
+
+  // 4. Palmerah / Slipi (Jakarta Barat) - 1.8JT
+  {
+    id: 'palmerah-slipi-residence',
+    name: 'Palmerah Slipi Residence (Google Maps Verified)',
+    slug: 'palmerah-slipi-residence',
+    type: 'Campur',
+    city: 'Jakarta West',
+    area: 'Palmerah',
+    address: 'Jl. Palmerah Barat No. 42, Kec. Palmerah, Jakarta Barat 11480',
+    googleMapsUrl: 'https://maps.google.com/?q=Palmerah+Barat+Jakarta+Barat',
+    coordinates: { lat: -6.2034, lng: 106.7972 },
     price: 1800000,
     deposit: 500000,
     images: [
       'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80'
     ],
-    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Shared Kitchenette', 'Motorbike Parking'],
+    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', '24h Security', 'Motorbike Garage'],
     gemmaMatch: {
-      percentage: 95,
-      badge: '95% Match • KRL Tebet Budget Choice',
-      rationale: 'Verified budget place in Tebet Barat (Jakarta Selatan) 5 min to Stasiun KRL Tebet.',
+      percentage: 96,
+      badge: '96% Match • Stasiun KRL Palmerah & Kompas Gramedia',
+      rationale: 'Verified location in Palmerah (Jakarta Barat) 4 min walk to Stasiun KRL Palmerah under 2jt.',
       visionVerification: [
-        'Google Maps Verified: Clean Bedroom with AC',
-        'Google Maps Verified: Private Bathroom'
+        'Google Maps Verified: Ergonomic Desk',
+        'Google Maps Verified: Covered Garage'
       ]
     },
     rating: 4.7,
-    reviewCount: 82,
-    rules: ['No pets', 'Quiet hours after 10 PM'],
+    reviewCount: 88,
+    rules: ['Keycard access'],
     nearbyPOIs: [
-      { name: 'Stasiun KRL Tebet', distance: '500 m', time: '6 min walk', type: 'transit' },
-      { name: 'Tebet Eco Park', distance: '900 m', time: '11 min walk', type: 'transit' }
+      { name: 'Stasiun KRL Palmerah', distance: '350 m', time: '4 min walk', type: 'transit' },
+      { name: 'Gedung Kompas Gramedia', distance: '500 m', time: '6 min walk', type: 'transit' }
     ],
     landlord: {
-      name: 'Ibu Endang Tebet',
+      name: 'Pak Agung Palmerah',
       phone: '6281776655443',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
-      verified: true,
-      responseRate: 'Under 10 minutes'
-    },
-    roomTypes: [
-      { name: 'Budget Single Tebet', size: '3 x 3 m', price: 1800000, available: 2 }
-    ],
-    description: 'Budget Tebet boarding house in South Jakarta under 2jt. Close to KRL Tebet train station.',
-    availableFrom: 'Ready to Move In'
-  },
-
-  // 4. Grogol / Tanjung Duren (Jakarta Barat) - BUDGET UNDER 2JT
-  {
-    id: 'griya-grogol-student',
-    name: 'Griya Grogol Student (Google Maps Verified)',
-    slug: 'griya-grogol-student',
-    type: 'Campur',
-    city: 'Jakarta West',
-    area: 'Grogol',
-    address: 'Jl. Dr. Susilo I No. 15, Grogol Petamburan, Jakarta Barat 11450',
-    googleMapsUrl: 'https://maps.google.com/?q=Dr+Susilo+Grogol+Jakarta+Barat',
-    coordinates: { lat: -6.1620, lng: 106.7880 },
-    price: 1600000,
-    deposit: 400000,
-    images: [
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80'
-    ],
-    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Shared Pantry', 'Motorbike Garage'],
-    gemmaMatch: {
-      percentage: 94,
-      badge: '94% Match • UNTAR & Trisakti Budget Room',
-      rationale: 'Verified student room in Dr. Susilo Grogol (Jakarta Barat) under 1.8jt.',
-      visionVerification: [
-        'Google Maps Verified: Student Study Table',
-        'Google Maps Verified: Split AC'
-      ]
-    },
-    rating: 4.6,
-    reviewCount: 68,
-    rules: ['Student ID required', 'Quiet hours after 10 PM'],
-    nearbyPOIs: [
-      { name: 'Kampus UNTAR & Trisakti', distance: '300 m', time: '4 min walk', type: 'campus' },
-      { name: 'Stasiun KRL Grogol', distance: '600 m', time: '7 min walk', type: 'transit' }
-    ],
-    landlord: {
-      name: 'Pak Hendra Grogol',
-      phone: '6281298765432',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
       verified: true,
       responseRate: 'Under 10 minutes'
     },
     roomTypes: [
-      { name: 'Grogol Single Room', size: '3 x 3 m', price: 1600000, available: 3 }
+      { name: 'Palmerah Single Studio', size: '3.5 x 3.5 m', price: 1800000, available: 2 }
     ],
-    description: 'Affordable Grogol student room near UNTAR, Trisakti, and KRL Grogol station under 1.8jt.',
+    description: 'Located in Palmerah, West Jakarta. Direct walking access to Stasiun KRL Palmerah and Slipi office towers.',
     availableFrom: 'Ready to Move In'
   },
 
-  // 5. Setiabudi Premium (Jakarta Selatan) - 2.45JT
+  // 5. Sunter (Jakarta Utara) - 2.1JT
+  {
+    id: 'sunter-agung-coliving',
+    name: 'Sunter Agung Co-Living (Google Maps Verified)',
+    slug: 'sunter-agung-coliving',
+    type: 'Campur',
+    city: 'Jakarta North',
+    area: 'Sunter',
+    address: 'Jl. Sunter Agung Utara No. 12, Sunter Agung, Tanjung Priok, Jakarta Utara 14350',
+    googleMapsUrl: 'https://maps.google.com/?q=Sunter+Agung+Utara+Jakarta+Utara',
+    coordinates: { lat: -6.1484, lng: 106.8553 },
+    price: 2100000,
+    deposit: 500000,
+    images: [
+      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1200&q=80'
+    ],
+    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Balcony', 'Basement Parking', '24h Security'],
+    gemmaMatch: {
+      percentage: 97,
+      badge: '97% Match • Sunter Mall & JIExpo Kemayoran',
+      rationale: 'Verified location in Sunter Agung (Jakarta Utara). Modern co-living near Sunter Mall & Kemayoran.',
+      visionVerification: [
+        'Google Maps Verified: Balcony with City View',
+        'Google Maps Verified: Underground Garage'
+      ]
+    },
+    rating: 4.8,
+    reviewCount: 96,
+    rules: ['Parking sticker required'],
+    nearbyPOIs: [
+      { name: 'Sunter Mall', distance: '400 m', time: '5 min walk', type: 'mall' },
+      { name: 'JIExpo Kemayoran', distance: '1.5 km', time: '6 min drive', type: 'transit' }
+    ],
+    landlord: {
+      name: 'Pengelola Sunter Co-Living',
+      phone: '628111546477',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      verified: true,
+      responseRate: 'Under 10 minutes'
+    },
+    roomTypes: [
+      { name: 'Sunter Deluxe Studio', size: '3.5 x 4 m', price: 2100000, available: 2 }
+    ],
+    description: 'Modern residential co-living in Sunter Agung, North Jakarta. Close to Sunter Mall, Kemayoran, and Ancol.',
+    availableFrom: 'Ready to Move In'
+  },
+
+  // 6. Pluit / Muara Karang (Jakarta Utara) - 2.8JT
+  {
+    id: 'pluit-muara-karang-suite',
+    name: 'Pluit Muara Karang Suite (Google Maps Verified)',
+    slug: 'pluit-muara-karang-suite',
+    type: 'Campur',
+    city: 'Jakarta North',
+    area: 'Pluit',
+    address: 'Jl. Pluit Karang Cantik No. 8, Pluit, Penjaringan, Jakarta Utara 14450',
+    googleMapsUrl: 'https://maps.google.com/?q=Pluit+Karang+Cantik+Jakarta+Utara',
+    coordinates: { lat: -6.1154, lng: 106.7906 },
+    price: 2800000,
+    deposit: 1000000,
+    images: [
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80'
+    ],
+    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Smart TV', '24h Security'],
+    gemmaMatch: {
+      percentage: 98,
+      badge: '98% Match • Pluit Village & Muara Karang Culinary',
+      rationale: 'Verified location in Pluit (Jakarta Utara). 5 min walk to Pluit Village Mall & Muara Karang seafood.',
+      visionVerification: [
+        'Google Maps Verified: Smart TV & WiFi',
+        'Google Maps Verified: Marble Bathroom'
+      ]
+    },
+    rating: 4.8,
+    reviewCount: 120,
+    rules: ['Keycard access required'],
+    nearbyPOIs: [
+      { name: 'Pluit Village Mall', distance: '500 m', time: '6 min walk', type: 'mall' },
+      { name: 'Pusat Kuliner Muara Karang', distance: '300 m', time: '4 min walk', type: 'food' }
+    ],
+    landlord: {
+      name: 'Pengelola Pluit Suite',
+      phone: '622150996923',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+      verified: true,
+      responseRate: 'Under 10 minutes'
+    },
+    roomTypes: [
+      { name: 'Pluit Executive Suite', size: '4 x 4 m', price: 2800000, available: 1 }
+    ],
+    description: 'Located in Pluit, North Jakarta. Close to Pluit Village, Muara Karang culinary strip, and Soekarno-Hatta airport toll.',
+    availableFrom: 'Ready to Move In'
+  },
+
+  // 7. Jagakarsa (Jakarta Selatan) - 1.4JT
+  {
+    id: 'jagakarsa-ui-student',
+    name: 'Jagakarsa UI Student Residence (Google Maps Verified)',
+    slug: 'jagakarsa-ui-student',
+    type: 'Campur',
+    city: 'Jakarta South',
+    area: 'Jagakarsa',
+    address: 'Jl. Srengseng Sawah No. 45, Jagakarsa, Jakarta Selatan 12640',
+    googleMapsUrl: 'https://maps.google.com/?q=Srengseng+Sawah+Jagakarsa+Jakarta+Selatan',
+    coordinates: { lat: -6.3322, lng: 106.8291 },
+    price: 1400000,
+    deposit: 300000,
+    images: [
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80'
+    ],
+    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Motorbike Garage', 'Water Dispenser'],
+    gemmaMatch: {
+      percentage: 95,
+      badge: '95% Match • Universitas Pancasila & UI Budget Room',
+      rationale: 'Verified budget student room in Jagakarsa (Jakarta Selatan) under 1.5jt.',
+      visionVerification: [
+        'Google Maps Verified: Student Study Desk',
+        'Google Maps Verified: Covered Garage'
+      ]
+    },
+    rating: 4.7,
+    reviewCount: 62,
+    rules: ['Student ID required', 'Quiet hours after 10 PM'],
+    nearbyPOIs: [
+      { name: 'Universitas Pancasila & Stasiun KRL', distance: '400 m', time: '5 min walk', type: 'campus' },
+      { name: 'Universitas Indonesia (UI) Depok Gate', distance: '1.2 km', time: '5 min drive', type: 'campus' }
+    ],
+    landlord: {
+      name: 'Pak Hendra Jagakarsa',
+      phone: '6281298765432',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      verified: true,
+      responseRate: 'Under 10 minutes'
+    },
+    roomTypes: [
+      { name: 'Budget Student Room', size: '3 x 3 m', price: 1400000, available: 4 }
+    ],
+    description: 'Leafy and peaceful student boarding house in Jagakarsa, South Jakarta under 1.5jt. Close to Universitas Pancasila and UI Depok.',
+    availableFrom: 'Ready to Move In'
+  },
+
+  // 8. Jatinegara (Jakarta Timur) - 1.65JT
+  {
+    id: 'jatinegara-transit-room',
+    name: 'Jatinegara Transit Room (Google Maps Verified)',
+    slug: 'jatinegara-transit-room',
+    type: 'Campur',
+    city: 'Jakarta East',
+    area: 'Jatinegara',
+    address: 'Jl. Matraman Raya No. 110, Jatinegara, Jakarta Timur 13310',
+    googleMapsUrl: 'https://maps.google.com/?q=Matraman+Raya+Jatinegara+Jakarta+Timur',
+    coordinates: { lat: -6.2150, lng: 106.8650 },
+    price: 1650000,
+    deposit: 400000,
+    images: [
+      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80'
+    ],
+    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', '24h Access'],
+    gemmaMatch: {
+      percentage: 94,
+      badge: '94% Match • Stasiun KRL Jatinegara & Matraman',
+      rationale: 'Verified location on Matraman Raya Jatinegara (Jakarta Timur) 5 min walk to Stasiun KRL Jatinegara.',
+      visionVerification: [
+        'Google Maps Verified: Split AC',
+        'Google Maps Verified: Private Bathroom'
+      ]
+    },
+    rating: 4.6,
+    reviewCount: 74,
+    rules: ['Quiet hours after 10 PM'],
+    nearbyPOIs: [
+      { name: 'Stasiun KRL Jatinegara', distance: '450 m', time: '5 min walk', type: 'transit' },
+      { name: 'Pasar Jatinegara', distance: '600 m', time: '7 min walk', type: 'mall' }
+    ],
+    landlord: {
+      name: 'Pak Agung Jatinegara',
+      phone: '6281776655443',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      verified: true,
+      responseRate: 'Under 10 minutes'
+    },
+    roomTypes: [
+      { name: 'Jatinegara Single', size: '3 x 3.5 m', price: 1650000, available: 2 }
+    ],
+    description: 'Convenient transit room in Jatinegara, East Jakarta under 1.8jt. Close to Stasiun KRL Jatinegara and Matraman.',
+    availableFrom: 'Ready to Move In'
+  },
+
+  // 9. Puri Indah (Jakarta Barat) - 3.2JT
+  {
+    id: 'puri-indah-executive-suite',
+    name: 'Puri Indah Executive Suite (Google Maps Verified)',
+    slug: 'puri-indah-executive-suite',
+    type: 'Campur',
+    city: 'Jakarta West',
+    area: 'Puri Indah',
+    address: 'Jl. Puri Indah Raya No. 18, Kembangan, Jakarta Barat 11610',
+    googleMapsUrl: 'https://maps.google.com/?q=Puri+Indah+Raya+Jakarta+Barat',
+    coordinates: { lat: -6.1880, lng: 106.7350 },
+    price: 3200000,
+    deposit: 1000000,
+    images: [
+      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1200&q=80'
+    ],
+    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Smart TV', 'Basement Parking', '24h Security'],
+    gemmaMatch: {
+      percentage: 98,
+      badge: '98% Match • Puri Indah Mall & Lippo Mall Puri',
+      rationale: 'Verified location in Puri Indah (Jakarta Barat). 4 min walk to Puri Indah Mall & Lippo Mall Puri.',
+      visionVerification: [
+        'Google Maps Verified: Wall-mounted Smart TV',
+        'Google Maps Verified: Basement Parking'
+      ]
+    },
+    rating: 4.9,
+    reviewCount: 110,
+    rules: ['Access card required'],
+    nearbyPOIs: [
+      { name: 'Puri Indah Mall', distance: '300 m', time: '4 min walk', type: 'mall' },
+      { name: 'Lippo Mall Puri', distance: '600 m', time: '7 min walk', type: 'mall' }
+    ],
+    landlord: {
+      name: 'Pengelola Puri Executive',
+      phone: '628111546477',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      verified: true,
+      responseRate: 'Under 10 minutes'
+    },
+    roomTypes: [
+      { name: 'Puri Studio Suite', size: '4 x 4 m', price: 3200000, available: 2 }
+    ],
+    description: 'Executive co-living in Puri Indah, West Jakarta. Walking distance to Puri Indah Mall and Lippo Mall Puri.',
+    availableFrom: 'Ready to Move In'
+  },
+
+  // 10. Setiabudi Premium (Jakarta Selatan) - 2.45JT
   {
     id: 'cove-nine-setiabudi',
     name: 'Cove Nine Setiabudi (Google Maps Verified)',
@@ -267,8 +503,7 @@ export const KOS_LISTINGS: KosListing[] = [
     deposit: 1000000,
     images: [
       'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80'
     ],
     facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Water Heater', '24h Access', 'Motorbike Parking', 'Desk & Ergonomic Chair'],
     gemmaMatch: {
@@ -277,13 +512,12 @@ export const KOS_LISTINGS: KosListing[] = [
       rationale: 'Verified place in Karet Kuningan Setiabudi (Jakarta Selatan), 4 min walk to MRT Setiabudi Astra.',
       visionVerification: [
         'Google Maps Verified: Dedicated Study Desk & Chair',
-        'Google Maps Verified: Window with Natural Daylight',
-        'Google Maps Verified: Clean Ensuite Bathroom with Hot Shower'
+        'Google Maps Verified: Window with Natural Daylight'
       ]
     },
     rating: 4.8,
     reviewCount: 128,
-    rules: ['No smoking inside room', 'Quiet hours after 10 PM', 'Electronic access card provided'],
+    rules: ['No smoking inside room', 'Quiet hours after 10 PM'],
     nearbyPOIs: [
       { name: 'Stasiun MRT Setiabudi Astra', distance: '350 m', time: '4 min walk', type: 'transit' },
       { name: 'Sudirman Central Business District', distance: '1.2 km', time: '6 min drive', type: 'transit' }
@@ -302,56 +536,7 @@ export const KOS_LISTINGS: KosListing[] = [
     availableFrom: 'Ready to Move In'
   },
 
-  // 6. Menteng (Jakarta Pusat) - 3.4JT
-  {
-    id: 'rukita-menteng-huis',
-    name: 'Rukita Menteng Huis (Google Maps Verified)',
-    slug: 'rukita-menteng-huis',
-    type: 'Campur',
-    city: 'Jakarta Central',
-    area: 'Menteng',
-    address: 'Jl. Menteng Raya No. 24, Cikini, Kec. Menteng, Jakarta Pusat 10340',
-    googleMapsUrl: 'https://maps.google.com/?q=Rukita+Menteng+Raya+Jakarta',
-    coordinates: { lat: -6.1944, lng: 106.8389 },
-    price: 3400000,
-    deposit: 1000000,
-    images: [
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Water Heater', 'Shared Kitchen', 'Lounge Area', 'Daily Cleaning'],
-    gemmaMatch: {
-      percentage: 98,
-      badge: '98% Match • Menteng Diplomatic Hub',
-      rationale: 'Verified location in Menteng (Jakarta Pusat). 5 min to Stasiun Cikini & Thamrin CBD.',
-      visionVerification: [
-        'Google Maps Verified: Minimalist Executive Suite',
-        'Google Maps Verified: Ensuite Marble Bathroom',
-        'Google Maps Verified: Smart Keycard Lock'
-      ]
-    },
-    rating: 4.8,
-    reviewCount: 110,
-    rules: ['No pets', 'Quiet hours after 10 PM', 'Keycard access'],
-    nearbyPOIs: [
-      { name: 'Stasiun Cikini', distance: '400 m', time: '5 min walk', type: 'transit' },
-      { name: 'Monas & Thamrin Business District', distance: '1.2 km', time: '5 min drive', type: 'transit' }
-    ],
-    landlord: {
-      name: 'Pengelola Rukita Menteng',
-      phone: '628111546477',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-      verified: true,
-      responseRate: 'Under 10 minutes'
-    },
-    roomTypes: [
-      { name: 'Menteng Executive Room', size: '4 x 4.5 m', price: 3400000, available: 2 }
-    ],
-    description: 'Exclusive Menteng co-living in Central Jakarta. High security, luxury furnishings, and fast fiber internet.',
-    availableFrom: 'Ready to Move In'
-  },
-
-  // 7. Tanah Abang (Jakarta Pusat) - 2.8JT
+  // 11. Tanah Abang (Jakarta Pusat) - 2.8JT
   {
     id: 'rukita-serenity-kebonkacang',
     name: 'Rukita Serenity Kebon Kacang (Google Maps Verified)',
@@ -374,13 +559,12 @@ export const KOS_LISTINGS: KosListing[] = [
       badge: '96% Match • Grand Indonesia & Plaza Indonesia',
       rationale: 'Verified Kebon Kacang location (Jakarta Pusat). 3 min walk to Grand Indonesia & Plaza Indonesia malls.',
       visionVerification: [
-        'Google Maps Verified: Wall-mounted Smart TV',
-        'Google Maps Verified: Modern Tiled Bathroom'
+        'Google Maps Verified: Wall-mounted Smart TV'
       ]
     },
     rating: 4.7,
     reviewCount: 95,
-    rules: ['Quiet hours after 10 PM', 'Visitors lobby access only'],
+    rules: ['Quiet hours after 10 PM'],
     nearbyPOIs: [
       { name: 'Grand Indonesia & Plaza Indonesia', distance: '300 m', time: '3 min walk', type: 'mall' },
       { name: 'Stasiun KRL Tanah Abang', distance: '800 m', time: '10 min walk', type: 'transit' }
@@ -399,103 +583,7 @@ export const KOS_LISTINGS: KosListing[] = [
     availableFrom: 'Ready to Move In'
   },
 
-  // 8. Kelapa Gading (Jakarta Utara) - 3.1JT
-  {
-    id: 'cove-boulevard-kelapagading',
-    name: 'Cove Boulevard Kelapa Gading (Google Maps Verified)',
-    slug: 'cove-boulevard-kelapagading',
-    type: 'Campur',
-    city: 'Jakarta North',
-    area: 'Kelapa Gading',
-    address: 'Jl. Boulevard Raya LB 1 No. 8, Kelapa Gading, Jakarta Utara 14240',
-    googleMapsUrl: 'https://maps.google.com/?q=Boulevard+Raya+Kelapa+Gading+Jakarta',
-    coordinates: { lat: -6.1610, lng: 106.9050 },
-    price: 3100000,
-    deposit: 1000000,
-    images: [
-      'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80'
-    ],
-    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Water Heater', 'Basement Parking', '24h Security'],
-    gemmaMatch: {
-      percentage: 98,
-      badge: '98% Match • Mall Kelapa Gading & LRT',
-      rationale: 'Verified location on Boulevard Raya (Jakarta Utara). 4 min walk to Mall Kelapa Gading & LRT.',
-      visionVerification: [
-        'Google Maps Verified: Modern Suite Interior',
-        'Google Maps Verified: Secured Basement Parking'
-      ]
-    },
-    rating: 4.9,
-    reviewCount: 152,
-    rules: ['Parking sticker required', 'No smoking in indoor corridors'],
-    nearbyPOIs: [
-      { name: 'Mall Kelapa Gading (MKG)', distance: '300 m', time: '4 min walk', type: 'mall' },
-      { name: 'Stasiun LRT Kelapa Gading', distance: '500 m', time: '6 min walk', type: 'transit' }
-    ],
-    landlord: {
-      name: 'Pengelola Cove Kelapa Gading',
-      phone: '628111546477',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
-      verified: true,
-      responseRate: 'Under 10 minutes'
-    },
-    roomTypes: [
-      { name: 'Kelapa Gading Suite', size: '4 x 4 m', price: 3100000, available: 2 }
-    ],
-    description: 'Prime Boulevard Kelapa Gading location in North Jakarta. Close to shopping malls, culinary centers, and LRT transit.',
-    availableFrom: 'Ready to Move In'
-  },
-
-  // 9. Rawamangun (Jakarta Timur) - 2.2JT
-  {
-    id: 'rukita-balaipustaka-rawamangun',
-    name: 'Rukita Balai Pustaka Rawamangun (Google Maps Verified)',
-    slug: 'rukita-balaipustaka-rawamangun',
-    type: 'Campur',
-    city: 'Jakarta East',
-    area: 'Rawamangun',
-    address: 'Jl. Balai Pustaka Timur No. 12, Rawamangun, Pulo Gadung, Jakarta Timur 13220',
-    googleMapsUrl: 'https://maps.google.com/?q=Balai+Pustaka+Rawamangun+Jakarta',
-    coordinates: { lat: -6.1900, lng: 106.8850 },
-    price: 2200000,
-    deposit: 500000,
-    images: [
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80'
-    ],
-    facilities: ['WiFi 100Mbps', 'AC', 'Private Bathroom', 'Shared Kitchen', 'Motorbike Parking', '24h Security'],
-    gemmaMatch: {
-      percentage: 95,
-      badge: '95% Match • UNJ & TransJakarta Pemuda',
-      rationale: 'Verified location in Rawamangun (Jakarta Timur). 6 min walk to UNJ and TransJakarta Pemuda station.',
-      visionVerification: [
-        'Google Maps Verified: Student Desk & Chair',
-        'Google Maps Verified: Clean Ensuite Bathroom'
-      ]
-    },
-    rating: 4.8,
-    reviewCount: 88,
-    rules: ['Quiet hours after 10 PM', 'Keep shared kitchen clean'],
-    nearbyPOIs: [
-      { name: 'Universitas Negeri Jakarta (UNJ)', distance: '600 m', time: '7 min walk', type: 'campus' },
-      { name: 'Halte TransJakarta Pemuda Rawamangun', distance: '400 m', time: '5 min walk', type: 'transit' }
-    ],
-    landlord: {
-      name: 'Pak Agung Rawamangun',
-      phone: '6281776655443',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-      verified: true,
-      responseRate: 'Under 10 minutes'
-    },
-    roomTypes: [
-      { name: 'Standard Rawamangun Single', size: '3.5 x 3.5 m', price: 2200000, available: 2 }
-    ],
-    description: 'Located on Balai Pustaka in Rawamangun, East Jakarta. Great location for UNJ students and East Jakarta commuters.',
-    availableFrom: 'Ready to Move In'
-  },
-
-  // 10. Kemang (Jakarta Selatan) - 3.6JT
+  // 12. Kemang (Jakarta Selatan) - 3.6JT
   {
     id: 'cove-kemang-suites',
     name: 'Cove Kemang Suites (Google Maps Verified)',
@@ -518,13 +606,12 @@ export const KOS_LISTINGS: KosListing[] = [
       badge: '99% Match • Kemang Village & Expat Lifestyle',
       rationale: 'Verified location on Kemang Raya (Jakarta Selatan). Features swimming pool, fitness center & balcony.',
       visionVerification: [
-        'Google Maps Verified: Pool & Garden View',
-        'Google Maps Verified: Luxury Furnished Suite'
+        'Google Maps Verified: Pool & Garden View'
       ]
     },
     rating: 4.9,
     reviewCount: 160,
-    rules: ['Access card lock', 'No loud noise after 10 PM'],
+    rules: ['Access card lock'],
     nearbyPOIs: [
       { name: 'Kemang Village Mall', distance: '400 m', time: '5 min walk', type: 'mall' },
       { name: 'Como Park Kemang', distance: '600 m', time: '7 min walk', type: 'food' }
@@ -540,102 +627,6 @@ export const KOS_LISTINGS: KosListing[] = [
       { name: 'Kemang Balcony Suite', size: '4.5 x 5 m', price: 3600000, available: 1 }
     ],
     description: 'Luxury co-living on Kemang Raya in South Jakarta with swimming pool, gym, and cafe access.',
-    availableFrom: 'Ready to Move In'
-  },
-
-  // 11. Senopati / SCBD (Jakarta Selatan) - 3.8JT
-  {
-    id: 'senopati-scbd-residence',
-    name: 'Senopati SCBD Residence (Google Maps Verified)',
-    slug: 'senopati-scbd-residence',
-    type: 'Campur',
-    city: 'Jakarta South',
-    area: 'Senopati',
-    address: 'Jl. Senopati No. 84, Kebayoran Baru, Jakarta Selatan 12110',
-    googleMapsUrl: 'https://maps.google.com/?q=Senopati+Kebayoran+Baru+Jakarta',
-    coordinates: { lat: -6.2310, lng: 106.8080 },
-    price: 3800000,
-    deposit: 1500000,
-    images: [
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Smart TV', 'Basement Parking', 'Daily Cleaning'],
-    gemmaMatch: {
-      percentage: 99,
-      badge: '99% Match • SCBD Financial District',
-      rationale: 'Verified location on Senopati street (Jakarta Selatan). 5 min walk to Pacific Place SCBD.',
-      visionVerification: [
-        'Google Maps Verified: Executive Desk & Smart TV',
-        'Google Maps Verified: Modern Marble Bathroom'
-      ]
-    },
-    rating: 4.9,
-    reviewCount: 145,
-    rules: ['Access card mandatory', 'No smoking indoors'],
-    nearbyPOIs: [
-      { name: 'Pacific Place SCBD', distance: '500 m', time: '6 min walk', type: 'mall' },
-      { name: 'Stasiun MRT Istora Mandiri', distance: '700 m', time: '8 min walk', type: 'transit' }
-    ],
-    landlord: {
-      name: 'Pengelola Senopati Residence',
-      phone: '628111546477',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-      verified: true,
-      responseRate: 'Under 10 minutes'
-    },
-    roomTypes: [
-      { name: 'SCBD Executive Studio', size: '4.5 x 4.5 m', price: 3800000, available: 1 }
-    ],
-    description: 'Prime Senopati address in Kebayoran Baru, South Jakarta. Ideal for SCBD corporate professionals.',
-    availableFrom: 'Ready to Move In'
-  },
-
-  // 12. Blok M (Jakarta Selatan) - 3.2JT
-  {
-    id: 'cove-urooms-blokm',
-    name: 'Cove Urooms Blok M (Google Maps Verified)',
-    slug: 'cove-urooms-blokm',
-    type: 'Campur',
-    city: 'Jakarta South',
-    area: 'Blok M',
-    address: 'Jl. Melawai VI No. 28, Kebayoran Baru, Jakarta Selatan 12160',
-    googleMapsUrl: 'https://maps.google.com/?q=Cove+Urooms+Blok+M+Jakarta',
-    coordinates: { lat: -6.2440, lng: 106.7990 },
-    price: 3200000,
-    deposit: 1000000,
-    images: [
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1200&q=80'
-    ],
-    facilities: ['WiFi 150Mbps', 'AC', 'Private Bathroom', 'Smart Key Lock', 'Rooftop Lounge', 'Motorbike Parking'],
-    gemmaMatch: {
-      percentage: 98,
-      badge: '98% Match • MRT & Blok M Culinary Paradise',
-      rationale: 'Verified place in Melawai (Jakarta Selatan). 2 min walk to MRT Blok M BCA & Little Tokyo eateries.',
-      visionVerification: [
-        'Google Maps Verified: Modern Minimalist Suite',
-        'Google Maps Verified: Smart TV & High Speed WiFi'
-      ]
-    },
-    rating: 4.8,
-    reviewCount: 142,
-    rules: ['Quiet hours after 10 PM', 'Keycard access required'],
-    nearbyPOIs: [
-      { name: 'Stasiun MRT Blok M BCA', distance: '200 m', time: '2 min walk', type: 'transit' },
-      { name: 'Blok M Plaza & Little Tokyo', distance: '350 m', time: '4 min walk', type: 'mall' }
-    ],
-    landlord: {
-      name: 'Pengelola Cove Urooms',
-      phone: '628111546477',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-      verified: true,
-      responseRate: 'Under 10 minutes'
-    },
-    roomTypes: [
-      { name: 'Executive Suite Blok M', size: '4 x 4 m', price: 3200000, available: 2 }
-    ],
-    description: 'Prime Kebayoran Baru location in South Jakarta. Walking distance to MRT Blok M and M Bloc Space.',
     availableFrom: 'Ready to Move In'
   }
 ];
