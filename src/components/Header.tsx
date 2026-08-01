@@ -21,7 +21,7 @@ export default function Header({
 }: HeaderProps) {
   const { theme, setTheme } = useTheme();
 
-  const cities = ['All Locations', 'Jakarta South', 'Jakarta West', 'Bandung', 'Depok', 'Semarang', 'Bogor'];
+  const cities = ['All Locations', 'Jakarta South', 'Jakarta Central', 'Jakarta West', 'Jakarta North', 'Jakarta East'];
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
